@@ -1,4 +1,4 @@
-import {BrowserWindow, app} from "electron";
+import { BrowserWindow, app } from "electron";
 import * as events from "./events";
 import * as vars from "./vars";
 import path = require("path");
@@ -7,7 +7,7 @@ export class Application extends BrowserWindow {
     constructor() {
         super({
             width: 800,
-            height: 600
+            height: 600,
         });
     }
 

@@ -1,0 +1,10 @@
+/dist
+dist
+/node_modules
+node_modules
+/web/node_modules
+web/node_modules
+/web/.angular
+web/.angular
+web/.vscode
+/web/.vscode

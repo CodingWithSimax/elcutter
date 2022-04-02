@@ -1,4 +1,4 @@
-import {app} from "electron";
+import { app } from "electron";
 
 export async function setupEvents() {
     app.on("window-all-closed", () => {
