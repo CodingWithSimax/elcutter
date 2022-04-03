@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { ChangeDetectorRef, Injectable } from '@angular/core';
 import { ElectronService } from '../electron/electron.service';
 import { ProjectConfig } from '../../interfaces/project-config';
 
@@ -6,7 +6,7 @@ import { ProjectConfig } from '../../interfaces/project-config';
     providedIn: 'root',
 })
 export class ProjectService {
-    private config: ProjectConfig | undefined;
+    public config: ProjectConfig | undefined;
     private configPath: string | undefined;
 
     constructor(private electronService: ElectronService) {
@@ -14,13 +14,10 @@ export class ProjectService {
         setInterval(this.save.bind(this), 60 * 1000);
     }
 
-    public load(configPath: string): void {
-        if (!configPath.endsWith('.elcutter')) {
-            configPath = configPath + '.elcutter';
-        }
-
-        this.config = JSON.parse(this.electronService.fs.readFileSync(configPath).toString());
-        this.configPath = configPath;
+    public load(configPath: Array<string>): void {
+        this.config = JSON.parse(this.electronService.fs.readFileSync(configPath[0]).toString());
+        this.configPath = configPath[0];
+        this.save();
         console.log('Read config: ', this.config);
     }
 

@@ -1,0 +1,17 @@
+.edit-row {
+    position: relative;
+    margin-top: 3px;
+    margin-bottom: 3px;
+
+    border-style: solid;
+    border-width: 2px;
+    border-color: rgb(0, 0, 0);
+}
+.row-content {
+}
+.row-space {
+    border-style: solid;
+    border-width: 0;
+    border-right-width: 2px;
+    border-color: rgb(80, 80, 80);
+}

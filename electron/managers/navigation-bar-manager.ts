@@ -31,13 +31,24 @@ export class NavigationBarManager {
     }
 
     private createProject(): void {
-        const result = dialog.showOpenDialogSync({
+        let result = dialog.showSaveDialogSync({
             title: "Create Project",
             message: "Select a new project folder",
-            properties: ["showHiddenFiles", "openDirectory"],
+            properties: ["showHiddenFiles"],
+            filters: [
+                {
+                    name: "elcutter",
+                    extensions: [this.extension],
+                },
+            ],
         });
         if (result !== undefined) {
-            const contents = fs.readdirSync(result[0]);
+            // check if folder has ending
+            if (!result.endsWith("." + this.extension)) result += "." + this.extension;
+
+            const folder = result.split("\\").join("/").split("/").slice(0, -1).join("/");
+
+            const contents = fs.readdirSync(folder);
             if (contents.length > 0) {
                 dialog.showMessageBoxSync({
                     title: "Project cannot be created",
@@ -47,7 +58,7 @@ export class NavigationBarManager {
                 return;
             }
 
-            this.application.webContents.send("create-project", result);
+            this.application.webContents.send("create-project", result, folder);
         }
     }
 

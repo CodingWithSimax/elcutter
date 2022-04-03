@@ -10,9 +10,7 @@ export interface ProjectConfig {
     sources: {
         [key: string]: string;
     };
-    timeline: {
-        [key: number]: Array<TimelineObject>;
-    };
+    timeline: Array<Array<TimelineObject>>;
 }
 
 const defaultConfig: ProjectConfig = {
@@ -25,12 +23,6 @@ const defaultConfig: ProjectConfig = {
     fps: 60,
     sources: {},
     // 5 timelines at start
-    timeline: {
-        1: [],
-        2: [],
-        3: [],
-        4: [],
-        5: [],
-    },
+    timeline: [[], [], [], [], []],
 };
 export { defaultConfig };

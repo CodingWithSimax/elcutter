@@ -1,5 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 
+// theme based on https://colorhunt.co/palette/1b1a17f0a500e45826e6d5b8
+
 body {
-    background-color: rgb(70, 70, 70);
+    background-color: #e45826;
+}
+
+label,
+button,
+div {
+    color: #e6d5b8;
+}
+
+.nowordwrap {
+    white-space: nowrap;
 }

@@ -14,14 +14,13 @@ export class ProjectManagerService {
         renderer.on('save-project', this.saveProject.bind(this));
     }
 
-    private createProject(event: any, path: string): void {
-        const configFile = `${path}/project.elcutter`;
-        console.log('Config file: ', configFile);
-        this.electron.fs.writeFileSync(configFile, JSON.stringify(defaultConfig, undefined, 4));
-        this.electron.fs.mkdirSync(`${path}/${defaultConfig.assetsFolder}`);
-        this.projectService.load(configFile);
+    private createProject(event: any, file: string, folder: string): void {
+        console.log('Config file: ', file);
+        this.electron.fs.writeFileSync(file, JSON.stringify(defaultConfig, undefined, 4));
+        this.electron.fs.mkdirSync(`${folder}/${defaultConfig.assetsFolder}`);
+        this.projectService.load([file]);
     }
-    private loadProject(event: any, p: string): void {
+    private loadProject(event: any, p: Array<string>): void {
         console.log('load project', p);
         this.projectService.load(p);
     }

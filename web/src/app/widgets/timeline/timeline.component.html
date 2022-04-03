@@ -1,0 +1,26 @@
+<div class="position-absolute w-100 h-100 d-flex flex-column flex-nowrap overflow-hidden" style="left: 0; top: 0">
+    <div
+        class="d-flex flex-wrap flex-row flex-grow-0"
+        style="min-height: 3.5rem; background-color: #e6d5b8; margin-bottom: 3px"
+    >
+        Here is content
+    </div>
+    <div class="position-relative flex-grow-1 overflow-auto">
+        <div class="container gap-5 position-relative" style="min-height: 100%; min-width: 100%">
+            <div
+                class="row edit-row d-flex flex-row flex-nowrap"
+                [style.height]="rowHeight + 'rem'"
+                [style.padding]="rowHeight / 10 + 'rem'"
+                *ngFor="let row of projectService.config?.timeline; let i = index"
+            >
+                <div
+                    class="col nowordwrap fw-bold row-space mt-0 mb-0 pb-0 pt-0"
+                    [style.font-size]="rowHeight / 2 + 'rem'"
+                >
+                    {{ i + 1 }}
+                </div>
+                <div class="flex-grow-1">Content</div>
+            </div>
+        </div>
+    </div>
+</div>
